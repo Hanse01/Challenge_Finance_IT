@@ -33,3 +33,39 @@ for arr in combinations(nums, N//2):
         break
 
 print(min_value)
+
+
+
+from itertools import combinations, permutations
+
+N = int(input())
+board = [list(map(int, input().split())) for _ in range(N)]
+
+nums = []
+for idx in range(N):
+    nums.append(idx + 1)
+
+start = 0
+link = 0
+
+def score(array):
+    scr = 0
+    for arr in permutations(array, 2):
+        x, y = arr[0] - 1, arr[1] - 1
+        scr += board[x][y]
+    return scr
+
+min_value = 100000000
+
+for arr in combinations(nums, N//2):
+    res = []
+    for idx in range(N):
+        if (idx + 1) not in arr:
+            res.append(idx+1)
+    score_1 = score(list(arr))
+    score_2 = score(res)
+    min_value = min(min_value, abs(score_1 - score_2))
+    if min_value == 0:
+        break
+
+print(min_value)
