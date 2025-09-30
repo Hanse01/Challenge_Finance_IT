@@ -1,1 +1,13 @@
-
+SELECT 
+    ID,
+    CASE WHEN pr <= 0.25 THEN 'CRITICAL'
+         WHEN pr <= 0.50 THEN 'HIGH'
+         WHEN pr <= 0.75 THEN 'MEDIUM'
+         ELSE 'LOW'
+    END AS COLONY_NAME
+FROM (
+    SELECT 
+        ID, PERCENT_RANK() OVER (ORDER BY SIZE_OF_COLONY DESC) AS pr
+    FROM ECOLI_DATA
+) AS ranked
+ORDER BY ID;
