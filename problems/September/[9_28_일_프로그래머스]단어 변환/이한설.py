@@ -44,12 +44,12 @@ def solution(begin, target, words):
     if target not in words:
         return 0
     
-    L = len(begin)
+    Length = len(begin)
     pattern_dict = defaultdict(list)
     
 
     for word in words + [begin]:
-        for i in range(L):
+        for i in range(Length):
             pattern = word[:i] + "*" + word[i+1:]
             pattern_dict[pattern].append(word)
     
@@ -61,7 +61,7 @@ def solution(begin, target, words):
         word, steps = q.popleft()
         if word == target:
             return steps
-        for i in range(L):
+        for i in range(Length):
             pattern = word[:i] + "*" + word[i+1:]
             for next_word in pattern_dict[pattern]:
                 if next_word not in visited:
