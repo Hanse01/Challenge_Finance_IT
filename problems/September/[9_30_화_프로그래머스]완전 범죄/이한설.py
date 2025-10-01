@@ -1,7 +1,7 @@
 def solution(info, n, m):
     Length = len(info)
 
-    dp = [[[-1] * m for _ in range(n)] for _ in range(Length + 1)]
+    dp = [[[-1] * m for _ in range(n)] for _ in range(Length + 1)] #3차원으로 잡고 보드 평면은 세로는 A 범죄자놈, 가로는 B 범죄자놈, 차원은 물건 훔친 개수 (인덱스)
     dp[0][0][0] = 0 
 
     for idx, (n_w, m_w) in enumerate(info):
