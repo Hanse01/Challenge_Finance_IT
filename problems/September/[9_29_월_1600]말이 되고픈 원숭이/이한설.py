@@ -8,7 +8,7 @@ horse_dirs = [[2, 1], [2, -1], [1, 2], [1, -2],
               [-2, 1], [-2, -1], [-1, 2], [-1, -2]]
 
 board = [list(map(int, input().split())) for _ in range(H)]
-visited = [[[0] * (N + 1) for _ in range(W)] for _ in range(H)]
+visited = [[[0] * (N + 1) for _ in range(W)] for _ in range(H)] # 말처럼 움직인 거 고려하기 위해 3차원, 사실 3차원으로 안해도 될 거 같음.
 
 q = deque()
 q.append([0, 0, 0])
